@@ -1,0 +1,54 @@
+body {
+    background-image: url("eggs.jpg");
+    background-size: cover;
+    font-family: cursive;
+    font-weight: bold;
+    text-align: center; 
+    height: 100vh;
+}
+
+.container {
+    background: #D9AE83;
+    max-width: 50%;
+    margin: auto;
+    border: 3px solid rgb(61, 2, 2);
+    border-radius: 30px;
+}
+h1 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+button {
+    border: 1px solid brown;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-weight: bold;
+    width: 200px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+   
+}
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#increment-btn {
+    background: #A76A40;
+}
+
+#save-btn {
+    background: #6E3820;
+}
+
+#reset-btn {
+    background: #280D05;
+}
+
