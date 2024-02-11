@@ -51,58 +51,58 @@ incrementLaps()
 incrementLaps()
 console.log(lapsCompleted)*/
 
-let count = 0
-let dayCount = 0
-let newCount = 0
-let dailyAvg = newCount/dayCount
-let dailyEggTot = 0
+let count = 0;
+let dayCount = 0;
+let newCount = 0;
+let dailyAvg = newCount / dayCount;
+let dailyEggTot = 0;
 
-let countEl=document.getElementById("count-el")
-let saveEl = document.getElementById("save-el")
-let dayEl=document.getElementById("days-el")
-let avgEl=document.getElementById("average-el")
+let countEl = document.getElementById("count-el");
+let saveEl = document.getElementById("save-el");
+let dayEl = document.getElementById("days-el");
+let avgEl = document.getElementById("average-el");
 
 
 
 function increment() {
-    count+=1
+    count += 1;
     //document.getElementById("count-el").innerText = count
-    countEl.textContent= count
+    countEl.textContent = count;
 
 }
 
 function save() {
     //display all daily eggs collected
-    dailyEggTot = count + ", "
-    console.log(dailyEggTot)
-    saveEl.textContent += dailyEggTot//picks up spaces in innerHTML, doesn't delete previous info
+    dailyEggTot = count + ", ";
+    console.log(dailyEggTot);
+    saveEl.textContent += dailyEggTot;//picks up spaces in innerHTML, doesn't delete previous info
 
     //increase day counter every time SAVE is clicked
-    dayCount+=1
-    dayEl.textContent="Number of Days: " + parseInt(dayCount)
-    newCount=newCount + count   //holds a running total of eggs collected
-    console.log(newCount)
-    
+    dayCount += 1;
+    dayEl.textContent = "Number of Days: " + parseInt(dayCount);
+    newCount = newCount + count;  //holds a running total of eggs collected
+    console.log(newCount);
+
     //shows the total eggs collected divided by number of days
-    avgEl.textContent="Daily Average: " + parseInt(newCount/dayCount)
-    
+    avgEl.textContent = "Daily Average: " + parseInt(newCount / dayCount);
+
     //reset the daily screen to 0  
-    count=0
-    countEl.textContent= count
+    count = 0;
+    countEl.textContent = count;
 }
 //set the screen totals back to 0
 function reset() {
-    count = 0
-    countEl.textContent= count
+    count = 0;
+    countEl.textContent = count;
 
-    dailyEggTot = 0
-    saveEl.textContent += "" 
+    dailyEggTot = 0;
+    saveEl.textContent += "";
 
-    dayCount = 0
-    dayEl.textContent="Number of Days: "
+    dayCount = 0;
+    dayEl.textContent = "Number of Days: ";
 
-    newCount = 0
-    avgEl.textContent="Daily Average: " 
+    newCount = 0;
+    avgEl.textContent = "Daily Average: ";
 
 }
 
