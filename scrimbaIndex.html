@@ -9,14 +9,30 @@
 <body>
     <div class="container">
 
-        <h1 id="welcome-el"></h1><h1>Eggs Collected Today:</h1>
-       <h2 id="count-el">0</h2>
-      <button id="increment-btn" onclick="increment()">CLICK TO INCREASE COUNT <br>Press SAVE when done.</button>
-      <button id="save-btn" onclick="save()">SAVE</button>
+        <h1 id="welcome-el"></h1><h1>Egg Tracker</h1>
+       <h2 id="count-el">Collected today: </h2>
+      <button id="increment-btn" onclick="increment()">COUNT</button>
+      <button id="clear-btn" onclick="clearCount()"><span style="color:rgba(11, 2, 2, 0.98)">CLEAR</span></button>
+      <button id="save-btn" onclick="save()"><span style="color:rgba(235, 221, 31, 0.98)">SAVE</span></button>
        <p id="save-el">Daily Egg Totals: </p>
        <p id="days-el"></p>
-       <p id="average-el"></p>
-       <button id="reset-btn" onclick="reset()">RESET MONTHLY TOTAL</button>
+       
+       <!--<button id="reset-btn" onclick="reset()">CLOSE OUT THE MONTH</button>-->
+        <h2>Daily Averages</h2>
+        <div class="flex-container">
+            <div id="jan-el"></div>
+            <div id="feb-el"></div>        
+            <div id="mar-el"></div>        
+            <div id="apr-el"></div>
+            <div id="may-el"></div>
+            <div id="jun-el"></div>
+            <div id="jul-el"></div>
+            <div id="aug-el"></div>
+            <div id="sep-el"></div>
+            <div id="oct-el"></div>
+            <div id="nov-el"></div>
+            <div id="dec-el"></div>            
+        </div>  
     </div>
     
 

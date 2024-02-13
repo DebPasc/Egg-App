@@ -51,24 +51,65 @@ incrementLaps()
 incrementLaps()
 console.log(lapsCompleted)*/
 
+let currentDate = new Date();
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+let currentMonthIndex = currentDate.getMonth();
+let currentMonth = monthNames[currentMonthIndex];
+
 let count = 0;
 let dayCount = 0;
 let newCount = 0;
-let dailyAvg = newCount / dayCount;
+//let dailyAvg = newCount / dayCount;                       //this returns NaN
 let dailyEggTot = 0;
 
 let countEl = document.getElementById("count-el");
 let saveEl = document.getElementById("save-el");
 let dayEl = document.getElementById("days-el");
-let avgEl = document.getElementById("average-el");
+//let avgEl = document.getElementById("average-el");
+
+
+let janDailyAvg = 0;
+let febDailyAvg = 0;
+let marDailyAvg = 0;
+let aprDailyAvg = 0;
+let mayDailyAvg = 0;
+let junDailyAvg = 0;
+let julDailyAvg = 0;
+let augDailyAvg = 0;
+let sepDailyAvg = 0;
+let octDailyAvg = 0;
+let novDailyAvg = 0;
+let decDailyAvg = 0;
+
+document.getElementById("jan-el").textContent = "Jan";
+document.getElementById("feb-el").textContent = "Feb";
+document.getElementById("mar-el").textContent = "Mar";
+document.getElementById("apr-el").textContent = "Apr";
+document.getElementById("may-el").textContent = "May";
+document.getElementById("jun-el").textContent = "Jun";
+document.getElementById("jul-el").textContent = "Jul";
+document.getElementById("aug-el").textContent = "Aug";
+document.getElementById("sep-el").textContent = "Sep";
+document.getElementById("oct-el").textContent = "Oct";
+document.getElementById("nov-el").textContent = "Nov";
+document.getElementById("dec-el").textContent = "Dec";
+
 
 
 
 function increment() {
     count += 1;
     //document.getElementById("count-el").innerText = count
-    countEl.textContent = count;
+    countEl.textContent = "Collected today: " +parseInt(count);
+    console.log(count);
+    
+}
 
+function clearCount() {
+    console.log(count);
+    count = 0;
+    console.log(count);   
+    countEl.textContent = "Collected today: ";   
 }
 
 function save() {
@@ -80,23 +121,86 @@ function save() {
     //increase day counter every time SAVE is clicked
     dayCount += 1;
     dayEl.textContent = "Number of Days: " + parseInt(dayCount);
-    newCount = newCount + count;  //holds a running total of eggs collected
+    newCount += count;  //holds a running total of eggs collected
     console.log(newCount);
+    
 
     //shows the total eggs collected divided by number of days
-    avgEl.textContent = "Daily Average: " + parseInt(newCount / dayCount);
+    //avgEl.textContent = "Daily Average for " + currentMonth + ": " + parseInt(newCount / dayCount);
 
-    //reset the daily screen to 0  
+    
     count = 0;
-    countEl.textContent = count;
+    countEl.textContent = "Collected today: ";
+
+    //
+    switch (currentMonth) {
+        case "Jan":
+            janDailyAvg = newCount/dayCount;
+            document.getElementById("jan-el").textContent = "Jan: "  + parseInt(janDailyAvg);           
+            break;
+        case "Feb":
+            febDailyAvg = newCount/dayCount; 
+            document.getElementById("feb-el").textContent = "Feb: " + parseInt(febDailyAvg);           
+        break;
+        case "Mar":
+            marDailyAvg = newCount/dayCount;
+            document.getElementById("mar-el").textContent = "Mar" + parseInt(marDailyAvg);            
+        break;
+        case "Apr":
+            aprDailyAvg = newCount/dayCount; 
+            document.getElementById("apr-el").textContent = "Apr" + parseInt(aprDailyAvg);           
+        break;
+        case "May":
+            mayDailyAvg = newCount/dayCount; 
+            document.getElementById("may-el").textContent = "May" + parseInt(mayDailyAvg);          
+        break;
+        case "Jun":
+            junDailyAvg = newCount/dayCount; 
+            document.getElementById("jun-el").textContent = "Jun" + parseInt(junDailyAvg);          
+        break;
+        case "Jul":
+            julDailyAvg = newCount/dayCount;
+            document.getElementById("jul-el").textContent = "Jul" + parseInt(julDailyAvg);            
+        break;
+        case "Aug":
+            augDailyAvg = newCount/dayCount;
+            document.getElementById("aug-el").textContent = "Aug" + parseInt(augDailyAvg);           
+        break;
+        case "Sep":
+            sepDailyAvg = newCount/dayCount;
+            document.getElementById("sep-el").textContent = "Sep" + parseInt(sepDailyAvg);          
+        break;
+        case "Oct":
+            octDailyAvg = newCount/dayCount; 
+            document.getElementById("oct-el").textContent = "Oct" + parseInt(octDailyAvg);
+          
+        break;
+        case "Nov":
+            novDailyAvg = newCount/dayCount; 
+            document.getElementById("nov-el").textContent = "Nov" + parseInt(novDailyAvg);
+           
+        break;
+        case "Dec":
+            decDailyAvg = newCount/dayCount;
+            document.getElementById("dec-el").textContent = "Dec" + parseInt(decDailyAvg);
+            
+        break;
+    }
 }
-//set the screen totals back to 0
+//store the month total to the correct box
+
+
+
+    /**/
+
+    ////reset the daily screen to 0  
+
 function reset() {
     count = 0;
-    countEl.textContent = count;
+    countEl.textContent = "Collected today: ";
 
     dailyEggTot = 0;
-    saveEl.textContent += "";
+    saveEl.textContent = "Daily Egg Totals: ";
 
     dayCount = 0;
     dayEl.textContent = "Number of Days: ";
