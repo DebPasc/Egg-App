@@ -2,6 +2,7 @@ body {
     background-image: url("eggs.jpg");
     background-size: cover;
     font-family: cursive;
+    font-size: 10px;
     font-weight: bold;
     text-align: center; 
     height: 100vh;
@@ -15,40 +16,64 @@ body {
     border-radius: 30px;
 }
 h1 {
-    margin-top: 50px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: 14px;
 }
 
 h2 {
-    font-size: 50px;
-    margin-top: 0;
-    margin-bottom: 20px;
+    font-size: 10px;
+    margin-top: 5;
+    margin-bottom: 5px;
 }
 
 button {
     border: 1px solid brown;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     color: white;
     font-weight: bold;
-    width: 200px;
-    margin-bottom: 50px;
-    border-radius: 5px;
+    font-size: 10px;
+    width: 50px;
+    margin-bottom: 5px;
+    border-radius: 30px;
    
 }
-button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-}
+
 
 #increment-btn {
+    background: #A76A40;
+}
+#clear-btn {
     background: #A76A40;
 }
 
 #save-btn {
     background: #6E3820;
+    margin-top: 5px;
 }
 
 #reset-btn {
     background: #280D05;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    
+    max-width: 95%;
+    margin: 5px;
+    padding: 5px;
+    
+
+}
+
+.flex-container > div {
+    width: 75px;
+    margin: 5px;
+    text-align: center;
+    line-height: 20px;
+    border: 3px solid rgb(61, 2, 2);
+    border-radius: 30px;
 }
 
