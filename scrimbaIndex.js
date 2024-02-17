@@ -51,21 +51,34 @@ incrementLaps()
 incrementLaps()
 console.log(lapsCompleted)*/
 
+
+function checkForZero(newCountNum, dayCountNum) {
+    if (dayCountNum === 0 || newCountNum===0) {
+        return 0;
+    }
+    return newCountNum / dayCountNum;
+}
+
+
+
 let currentDate = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 let currentMonthIndex = currentDate.getMonth();
 let currentMonth = monthNames[currentMonthIndex];
+let holdMonthDailyAvg = currentMonth.toLowerCase() +"DailyAvg";
+
+
 
 let count = 0;
 let dayCount = 0;
 let newCount = 0;
-//let dailyAvg = newCount / dayCount;                       //this returns NaN
+let dailyAvg = checkForZero(newCount, dayCount);                       //this returns NaN
 let dailyEggTot = 0;
 
 let countEl = document.getElementById("count-el");
 let saveEl = document.getElementById("save-el");
 let dayEl = document.getElementById("days-el");
-//let avgEl = document.getElementById("average-el");
+let avgEl = document.getElementById("avg-el");
 
 
 let janDailyAvg = 0;
@@ -80,6 +93,14 @@ let sepDailyAvg = 0;
 let octDailyAvg = 0;
 let novDailyAvg = 0;
 let decDailyAvg = 0;
+
+// put this in a function
+// for(let i = 0; i < monthNames.length; i++){
+//     document.getElementById(monthNames[i].toLowerCase() + "-el").textContent = monthNames[i];
+// }
+
+
+
 
 document.getElementById("jan-el").textContent = "Jan";
 document.getElementById("feb-el").textContent = "Feb";
@@ -117,78 +138,70 @@ function save() {
     dailyEggTot = count + ", ";
     console.log(dailyEggTot);
     saveEl.textContent += dailyEggTot;//picks up spaces in innerHTML, doesn't delete previous info
-
-    //increase day counter every time SAVE is clicked
-    dayCount += 1;
+    dayCount += 1;              //increase day counter every time SAVE is clicked
     dayEl.textContent = "Number of Days: " + parseInt(dayCount);
     newCount += count;  //holds a running total of eggs collected
     console.log(newCount);
-    
+    let tempDailyAvg = newCount/dayCount;
+    avgEl.textContent = "Daily Average for " + currentMonth + ": " + parseInt(tempDailyAvg);
+    console.log(avgEl.textContent);
+    holdMonthDailyAvg = tempDailyAvg;
 
+    
+    console.log("temp" + holdMonthDailyAvg)  ;       //store avg in month and hold for display of ALL months later
     //shows the total eggs collected divided by number of days
     //avgEl.textContent = "Daily Average for " + currentMonth + ": " + parseInt(newCount / dayCount);
-
-    
     count = 0;
     countEl.textContent = "Collected today: ";
+    
+    
+}
+//toggle button to display all months, change text in button, and then hide boxes again
 
-    //
-    switch (currentMonth) {
-        case "Jan":
-            janDailyAvg = newCount/dayCount;
-            document.getElementById("jan-el").textContent = "Jan: "  + parseInt(janDailyAvg);           
-            break;
-        case "Feb":
-            febDailyAvg = newCount/dayCount; 
-            document.getElementById("feb-el").textContent = "Feb: " + parseInt(febDailyAvg);           
-        break;
-        case "Mar":
-            marDailyAvg = newCount/dayCount;
-            document.getElementById("mar-el").textContent = "Mar" + parseInt(marDailyAvg);            
-        break;
-        case "Apr":
-            aprDailyAvg = newCount/dayCount; 
-            document.getElementById("apr-el").textContent = "Apr" + parseInt(aprDailyAvg);           
-        break;
-        case "May":
-            mayDailyAvg = newCount/dayCount; 
-            document.getElementById("may-el").textContent = "May" + parseInt(mayDailyAvg);          
-        break;
-        case "Jun":
-            junDailyAvg = newCount/dayCount; 
-            document.getElementById("jun-el").textContent = "Jun" + parseInt(junDailyAvg);          
-        break;
-        case "Jul":
-            julDailyAvg = newCount/dayCount;
-            document.getElementById("jul-el").textContent = "Jul" + parseInt(julDailyAvg);            
-        break;
-        case "Aug":
-            augDailyAvg = newCount/dayCount;
-            document.getElementById("aug-el").textContent = "Aug" + parseInt(augDailyAvg);           
-        break;
-        case "Sep":
-            sepDailyAvg = newCount/dayCount;
-            document.getElementById("sep-el").textContent = "Sep" + parseInt(sepDailyAvg);          
-        break;
-        case "Oct":
-            octDailyAvg = newCount/dayCount; 
-            document.getElementById("oct-el").textContent = "Oct" + parseInt(octDailyAvg);
-          
-        break;
-        case "Nov":
-            novDailyAvg = newCount/dayCount; 
-            document.getElementById("nov-el").textContent = "Nov" + parseInt(novDailyAvg);
-           
-        break;
-        case "Dec":
-            decDailyAvg = newCount/dayCount;
-            document.getElementById("dec-el").textContent = "Dec" + parseInt(decDailyAvg);
-            
-        break;
+function monthsAll() {
+    let togButton = document.getElementById("months-all-btn");
+    if (togButton.textContent === "See Averages for All Months"){
+        for (let i = 0; i < monthNames.length; i++) {
+            let elementLowerMonth = monthNames[i].toLowerCase();
+            let monthDiv = document.getElementById(elementLowerMonth + "-el");
+            monthDiv.style.display = "block";
+            holdMonthDailyAvg = parseInt(elementLowerMonth +"DailyAvg") || 0;
+           /* if (currentMonthDailyAvg !== 0) {
+                monthNamesDailyAvg= currentMonthDailyAvg;*/
+        
+            monthDiv.textContent = monthNames[i] + ": " + holdMonthDailyAvg;
+            console.log(holdMonthDailyAvg);
+            togButton.textContent = "Hide Month Averages";
+        }
+   
+        /*togButton.textContent = "Hide Month Averages"
+        togButton.style.display = "none";*/
+    
+        
+    } else {
+        togButton.textContent === "Hide Month Averages";
+        for (let i = 0; i < monthNames.length; i++) {
+            let elementLowerMonth = monthNames[i].toLowerCase()
+            let monthDiv = document.getElementById(elementLowerMonth + "-el");
+            monthDiv.style.display = "none";
+            togButton.textContent = "See Averages for All Months";
+        }
     }
 }
-//store the month total to the correct box
-
+    /*for(let i = 0; i < monthNames.length; i++) {
+        let monthDiv = document.getElementById(monthNames[i].toLowerCase() + "-el");
+        monthDiv.textContent = monthNames[i];
+        let monthAvgNamesTemp = monthNames[i].toLowerCase() +"DailyAvg";
+        if (parseInt(monthAvgNamesTemp) <0) {
+            monthAvgNamesTemp=parseInt(0);
+        }
+        console.log(monthAvgNamesTemp);
+        
+        document.write(monthDiv.textContent = monthNames[i] + " " +parseInt(monthAvgNamesTemp));
+    }
+        
+    }*/
+    /* 
 
 
     /**/
@@ -234,30 +247,6 @@ console.log(myGreeting)
 
 let welcomeEl = document.getElementById("welcome-el")
 welcomeEl.innerText= myGreeting + "😊"*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
